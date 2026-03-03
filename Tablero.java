@@ -32,3 +32,15 @@ public class Tablero {
     }
     //Método que devuelve el tamaño del tablero
     public int getTamano() { return TAMANO; }
+    //Método público que muestra el tablero por consola
+    public void mostrarTablero() {
+        //Imprime un encabezado indicando el número de casillas
+        System.out.println("\n--- TABLERO (50 casillas) ---");
+        //Bucle que recorre todas las casillas
+        for(int i = 0; i < TAMANO; i++) {
+            if(i % 10 == 0 && i > 0) System.out.println();
+            System.out.print(i + ":" + casillas.get(i).getSimbolo() + " ");
+        }
+        System.out.println("\n");
+    }
+}
