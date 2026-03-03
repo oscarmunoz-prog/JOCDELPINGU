@@ -117,3 +117,12 @@ public class ControladorJuego {
         //Llama al método que mueve al jugador
         moverJugador(jugador, dado);
     }
+    //Metodo para procesar el turno de la IA
+    private void procesarTurnoIA(Jugador ia) {
+        vista.mostrarTurnoIA(ia); //Muestra que es el turno de la IA
+        //La IA lanza el dado automáticamente
+        int dado = ia.lanzarDado();
+        System.out.println("  🎲 Dado: " + dado);
+        
+        moverJugador(ia, dado); //Mueve a la IA
+    }
