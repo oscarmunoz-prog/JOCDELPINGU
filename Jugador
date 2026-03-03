@@ -42,3 +42,8 @@ public class Jugador {
     public boolean esIA() {
         return tipo == TipoJugador.IA;
     }
+
+    public void setTurnosSinJugar(int i) {
+        throw new UnsupportedOperationException("Unimplemented method 'setTurnosSinJugar'");
+    }
+}
