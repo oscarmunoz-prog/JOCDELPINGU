@@ -41,7 +41,60 @@ public class ControladorEventos {
             //Y en caso de ser un evento aleatorio,, y llamar al eventoAleatorio.
 
         }
+        if (entidad != null) {
+                entidad.interactuar(jugador);
+            }
+        }
+    //Si se crea una entidad que no es NULL, llamar al método interactuar.
+
+
+        private void eventoAleatorio(Jugador jugador) {
+            int evento = (int)(Math.random() * 5);
+            //Genera un numero aleatorio entre 0 y 4, y se convierte a int.
         
+            switch(evento) {
+    //Evalua al evento que haya salido
+
+                case 0:
+                    System.out.println(" Evento: Has encontrado un pez");
+                        jugador.getInventario().agregarPez();
+                    break;
+
+                    //Si el evento es 0, imprimir el evento del pescado.
+                    
+                case 1:
+                    System.out.println(" Evento: Has encontrado una bola de nieve");
+                    jugador.getInventario().agregarBolaNieve();
+                break;
+
+                //Si el evento es 1, imprimir evento de bola de nieve
+            
+            
+                case 2:
+                    System.out.println(" Evento: Has conseguido un dado extra");
+                    jugador.getInventario().agregarDado();
+                break;
+            
+                //Si es 2, evento de dado extra.
+            
+                case 3:
+                    if (jugador.getInventario().getDados() > 1) {
+                        System.out.println(" Evento: Has perdido un dado");
+                        jugador.getInventario().quitarDado();
+                    }
+                break;
+            //Si es 3, imprimir que has perdido un dado
+            
+                case 4:
+                    Foca foca = new Foca();
+                    foca.interactuar(jugador);
+                break;
+
+                //Y si es 4, se crea a la foca, y hace que interactue con el jugador.
+        }
+    }
+}       
+
       
 
         
