@@ -27,4 +27,8 @@ public class ControladorTablero {
 //Esto es un método que obtiene la casilla según su posición.
 //Recibe el parametro "int", llama al metodo getCasilla, y devuelve la casilla con la posición que toca,
 
+   public void mostrarTablero() {
+        tablero.mostrarTablero();
+    }
 
+    //Método publico que hace el tablero visible, llama al metodo mostrarTablero, y luego muestra el tablero.
