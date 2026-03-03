@@ -105,3 +105,15 @@ public class ControladorJuego {
             scanner.nextLine();
         }
     }
+    //Metodo para procesar el turno de un jugador humano
+    private void procesarTurnoHumano(Jugador jugador) {
+        vista.mostrarTurno(jugador); //Muestra el turno del jugador
+        //Espera a que el usuario pulse ENTER para lanzar el dado
+        System.out.print("Presiona ENTER para lanzar dado...");
+        scanner.nextLine();
+        //Llama al método del jugador para lanzar el dado y muestra el resultado
+        int dado = jugador.lanzarDado();
+        System.out.println("  🎲 Dado: " + dado);
+        //Llama al método que mueve al jugador
+        moverJugador(jugador, dado);
+    }
