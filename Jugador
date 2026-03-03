@@ -25,3 +25,7 @@ public class Jugador {
         registrarAccion("Ha sacado un " + resultado);
         return resultado;
     }
+
+    public void registrarAccion(String accion) {
+        historial.add(accion);
+    }
