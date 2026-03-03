@@ -72,3 +72,5 @@ public class Inventario {
         }
         return false;
     }
+    //Getter que devuelve la cantidad de peces
+    public int getPeces() { return items.get(item.TipoItem.PEZ); }
