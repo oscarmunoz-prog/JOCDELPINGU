@@ -141,3 +141,7 @@ public class ControladorJuego {
         //Muestra el inventario del jugador actualizado
         System.out.println("  " + jugador.getInventario().obtenerResumen());
     }
+    //Método para comprobar si un jugador ha ganado
+    private boolean haGanado(Jugador jugador) {
+        return jugador.getPosicion() >= 49;
+    }
