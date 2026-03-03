@@ -43,3 +43,55 @@ public class Foca implements Entidad {
 
                 }
                 break;
+            switch(accion) {
+           
+                case 0:
+                sif (jugador.getInventario().getPeces() > 0) {
+                    System.out.println(" La foca te roba un pez y se va");
+                    jugador.getInventario().quitarPez();
+                } else {
+                    System.out.println(" La foca te ha mordido, no tenias peces.");
+                    int retroceso = (int)(Math.random() * 3) + 1;
+                    int nuevaPos = Math.max(0, jugador.getPosicion() - retroceso);
+                    jugador.setPosicion(nuevaPos);
+                    System.out.println(" Retrocedes " + retroceso + " casillas");
+                }
+                break;
+                
+            case 1:
+                if (jugador.getInventario().getBolasNieve() > 0) {
+                    System.out.println(" La foca te QUITA UNA BOLA DE NIEVE y juega con ella, se va con ella");
+                    jugador.getInventario().quitarBolaNieve();
+
+                    //En el caso de que sea 1, la foca te quitara una bola de nieve, juega con ella delante de tu cara, y se va con ella.
+
+                } else {
+                    System.out.println(" La foca te da un coletazo te ha dado un coletazo(JAJAAAA)");
+                    if (jugador.getInventario().getDados() > 0) {
+                        jugador.getInventario().quitarDado();
+                        System.out.println(" El golpe ha hecho que pierdas un dado.");
+                    }
+                    //La foca ha tenido un mal dia, en caso de que tengas algun dado extra, te dara un coletazo y te lo quitara.
+
+                }
+                break;
+                
+            case 2:
+                System.out.println(" La foca ha hecho un pequeño remolino que te ha hecho retroceder.");
+                int retroceso = (int)(Math.random() * 5) + 1;
+                int nuevaPos = Math.max(0, jugador.getPosicion() - retroceso);
+                jugador.setPosicion(nuevaPos);
+                System.out.println("  Retrocedes " + retroceso + " casillas");
+                break;
+                //Si el caso es el 2, la foca hara que retrocedas creando un pequeño remolino con el agua, y hara que retrocedas varias casillas.
+                
+            case 3:
+                System.out.println(" La foca te ha quitado el turno, al parecer es mas lista que tu.");
+                jugador.setTurnosSinJugar(1);
+                break;
+        }
+        //A veces la foca es mas lista que tu, te engaña, y hace que pierdas el turno, te quedas sin tirada.
+        
+        System.out.println(" La foca se rie de ti, suerte a la proxima");
+    }
+}//La foca se despide

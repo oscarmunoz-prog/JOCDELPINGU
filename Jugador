@@ -10,3 +10,12 @@ public class Jugador {
     private int posicion;
     private Inventario inventario;
     private List<String> historial;
+
+    public Jugador(String nombre, String color, TipoJugador tipo) {
+        this.nombre = nombre;
+        this.color = color;
+        this.tipo = tipo;
+        this.posicion = 0;
+        this.inventario = new Inventario();
+        this.historial = new ArrayList<>();
+    }
