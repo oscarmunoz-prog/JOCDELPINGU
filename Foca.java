@@ -24,3 +24,22 @@ public class Foca implements Entidad {
         
         int accion = (int)(Math.random() * 4);
         
+        switch(accion) {
+            //Evalua la variable "acción" para saber que comportamiento tendra la foca contigo.
+
+            case 0:
+                if (jugador.getInventario().getPeces() > 0) {
+                    System.out.println(" La foca te roba un pez y se va");
+                    jugador.getInventario().quitarPez();
+            //En caso de que el caso sea 0, la foca te quitara un pez, si es que tienes alguno en el inventario
+
+                } else {
+                    System.out.println(" La foca te ha mordido, no tenias peces.");
+                    int retroceso = (int)(Math.random() * 3) + 1;
+                    int nuevaPos = Math.max(0, jugador.getPosicion() - retroceso);
+                    jugador.setPosicion(nuevaPos);
+                    System.out.println(" Retrocedes " + retroceso + " casillas");
+                    //Si no tienes peces, te morderá, ya que no la has podido alimentar, y te hara retroceder casillas.
+
+                }
+                break;
