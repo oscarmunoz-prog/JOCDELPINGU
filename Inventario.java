@@ -38,3 +38,10 @@ public class Inventario {
         }
         return false;
     }
+    //Método para añadir una bola de nieve
+    public void agregarBolaNieve() {
+        int actual = items.get(item.TipoItem.BOLA_NIEVE);
+        if (actual < MAX_BOLAS) {
+            items.put(item.TipoItem.BOLA_NIEVE, actual + 1);
+        }
+    }
