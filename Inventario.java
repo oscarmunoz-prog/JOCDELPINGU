@@ -54,3 +54,10 @@ public class Inventario {
         }
         return false;
     }
+    //Funcion para añadir un dado
+    public void agregarDado() {
+        int actual = items.get(item.TipoItem.DADO);
+        if (actual < MAX_DADOS) {
+            items.put(item.TipoItem.DADO, actual + 1);
+        }
+    }
