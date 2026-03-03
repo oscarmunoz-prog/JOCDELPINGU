@@ -3,14 +3,24 @@ package src.JOCDELPINGU.Modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+//Representa a un jugador de la partida (humano o IA)
 public class Jugador {
+
+    //Datos basicos del jugador
     private String nombre;
     private String color;
     private TipoJugador tipo;
+
+    //Posicion actual en el tablero
     private int posicion;
+
+    //Inventario asociado al jugador
     private Inventario inventario;
+
+    //Historial de acciones realizadas durante la partida
     private List<String> historial;
 
+    //Inicializa atributos y establece posicion inicial en 0
     public Jugador(String nombre, String color, TipoJugador tipo) {
         this.nombre = nombre;
         this.color = color;
@@ -20,12 +30,14 @@ public class Jugador {
         this.historial = new ArrayList<>();
     }
     
+    //Simula el lanzamiento de un dado (del 1 al 6)
     public int lanzarDado() {
         int resultado = (int)(Math.random() * 6) + 1;
         registrarAccion("Ha sacado un " + resultado);
         return resultado;
     }
 
+    //Guarda una accion en el historial
     public void registrarAccion(String accion) {
         historial.add(accion);
     }
@@ -35,14 +47,20 @@ public class Jugador {
     public String getColor() { return color; }
     public TipoJugador getTipo() { return tipo; }
     public int getPosicion() { return posicion; }
+
+    //Limita la posicion entre 0 y 49
     public void setPosicion(int posicion) { this.posicion = Math.max(0, Math.min(49, posicion)); }
     public Inventario getInventario() { return inventario; }
+
+    //Devuelve la lista directa
     public List<String> getHistorial() { return historial; }
 
+    //Indica si el jugador es de tipo IA
     public boolean esIA() {
         return tipo == TipoJugador.IA;
     }
 
+    //Metodo pendiente de implementacion
     public void setTurnosSinJugar(int i) {
         throw new UnsupportedOperationException("Unimplemented method 'setTurnosSinJugar'");
     }
