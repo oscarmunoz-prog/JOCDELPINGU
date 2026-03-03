@@ -14,3 +14,16 @@ public class ControladorJugador {
         this.jugadores = new ArrayList<>();
         this.scanner = new Scanner(System.in);
     }
+
+    public void inicializarJugadores(int numHumanos, boolean incluirIA) {
+        jugadores.clear();
+        
+        // Jugadores humanos
+        for(int i = 1; i <= numHumanos; i++) {
+            System.out.print("Nombre del jugador " + i + ": ");
+            String nombre = scanner.nextLine();
+            System.out.print("Color de la ficha: ");
+            String color = scanner.nextLine();
+            
+            jugadores.add(new Jugador(nombre, color, TipoJugador.HUMANO));
+        }
