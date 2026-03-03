@@ -1,0 +1,12 @@
+package src.JOCDELPINGU.Modelo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Jugador {
+    private String nombre;
+    private String color;
+    private TipoJugador tipo;
+    private int posicion;
+    private Inventario inventario;
+    private List<String> historial;

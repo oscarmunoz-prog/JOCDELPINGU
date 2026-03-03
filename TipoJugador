@@ -1,0 +1,6 @@
+package src.JOCDELPINGU.Modelo;
+
+public enum TipoJugador {
+    HUMANO,//Jugador Humano(Nosotros)
+    IA//Foca, Oso
+}
