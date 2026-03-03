@@ -38,3 +38,7 @@ public class Jugador {
     public void setPosicion(int posicion) { this.posicion = Math.max(0, Math.min(49, posicion)); }
     public Inventario getInventario() { return inventario; }
     public List<String> getHistorial() { return historial; }
+
+    public boolean esIA() {
+        return tipo == TipoJugador.IA;
+    }
