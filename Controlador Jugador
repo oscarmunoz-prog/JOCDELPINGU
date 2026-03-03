@@ -1,0 +1,16 @@
+package src.JOCDELPINGU.Controladores;
+
+import src.JOCDELPINGU.Modelo.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class ControladorJugador {
+    private List<Jugador> jugadores;
+    private Scanner scanner;
+    
+    public ControladorJugador() {
+        this.jugadores = new ArrayList<>();
+        this.scanner = new Scanner(System.in);
+    }
