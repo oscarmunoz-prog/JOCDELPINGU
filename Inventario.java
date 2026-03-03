@@ -74,3 +74,5 @@ public class Inventario {
     }
     //Getter que devuelve la cantidad de peces
     public int getPeces() { return items.get(item.TipoItem.PEZ); }
+    //Getter que devuelve la cantidad de dados
+    public int getBolasNieve() { return items.get(item.TipoItem.BOLA_NIEVE); }
