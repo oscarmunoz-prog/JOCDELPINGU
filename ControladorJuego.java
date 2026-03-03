@@ -117,3 +117,27 @@ public class ControladorJuego {
         //Llama al método que mueve al jugador
         moverJugador(jugador, dado);
     }
+    //Metodo para procesar el turno de la IA
+    private void procesarTurnoIA(Jugador ia) {
+        vista.mostrarTurnoIA(ia); //Muestra que es el turno de la IA
+        //La IA lanza el dado automáticamente
+        int dado = ia.lanzarDado();
+        System.out.println("  🎲 Dado: " + dado);
+        
+        moverJugador(ia, dado); //Mueve a la IA
+    }
+    //Método que mueve al jugador según los pasos del dado
+    private void moverJugador(Jugador jugador, int pasos) {
+        //Calcula la nueva posición:
+        int nuevaPosicion = Math.min(jugador.getPosicion() + pasos, 49);
+        jugador.setPosicion(nuevaPosicion); //Actualiza la posicion del Jugador
+        //Muestra la nueva posicion
+        System.out.println("  📍 Nueva posición: " + (nuevaPosicion + 1));
+        //Obtiene la casilla donde cayo y muestra su descripcion
+        Casilla casilla = controladorTablero.getCasilla(nuevaPosicion);
+        System.out.println("  📌 " + casilla.getDescripcion());
+        //Procesa los eventos especiales de esa casilla
+        controladorEventos.procesarCasilla(jugador, casilla);
+        //Muestra el inventario del jugador actualizado
+        System.out.println("  " + jugador.getInventario().obtenerResumen());
+    }
