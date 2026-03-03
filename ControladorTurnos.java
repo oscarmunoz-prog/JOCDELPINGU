@@ -14,3 +14,7 @@ public class ControladorTurnos {
      public void setJugadores(List<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
+
+     public Jugador getJugadorActual() {
+        return jugadores.get(turnoActual);
+    }
