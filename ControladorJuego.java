@@ -145,3 +145,9 @@ public class ControladorJuego {
     private boolean haGanado(Jugador jugador) {
         return jugador.getPosicion() >= 49;
     }
+    //Metodo para finalizar la partida
+    private void finalizarPartida(Jugador ganador) {
+        System.out.println("\n🎉 ¡" + ganador.getNombre() + " HA GANADO! 🎉");
+        juegoActivo = false;
+    }
+}
