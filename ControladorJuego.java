@@ -62,3 +62,22 @@ public class ControladorJuego {
         System.out.println("3. Salir");
         System.out.print("Elige: ");
     }
+    //Metodo para crear una nueva partida
+    private void nuevaPartida() {
+        //Pide cuantos jugadores humanos van a jugar
+        System.out.print("\n¿Cuántos jugadores humanos? (1-3): ");
+        int numHumanos = scanner.nextInt();
+        //Pregunta si se quiere jugar contra la IA
+        System.out.print("¿Incluir IA? (s/n): ");
+        String incluirIA = scanner.next();
+        
+        controladorJugador.inicializarJugadores(numHumanos, incluirIA.equalsIgnoreCase("s")); //Llama al ControladorJugador
+        controladorTablero.generarTablero(); //Crea el tablero con todas sus casillas
+        controladorTurnos.setJugadores(controladorJugador.getJugadores()); //Pasa al controlador de turnos la lista de jugadores
+        
+        vista.mostrarInicioPartida(); //Muestra mensaje de inicio
+        controladorTablero.mostrarTablero(); //Muestra el tablero vacío
+
+        //Llama al metodo que inicia el juego
+        jugar();
+    }
