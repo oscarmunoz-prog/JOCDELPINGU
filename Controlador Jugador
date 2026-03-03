@@ -1,0 +1,51 @@
+package src.JOCDELPINGU.Controladores;
+
+import src.JOCDELPINGU.Modelo.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+//Gestiona la creacion y administracion basica de jugadores
+public class ControladorJugador {
+    
+    //Lista que almacena los jugadores de la partida
+    private List<Jugador> jugadores;
+
+    //Scanner para leer datos desde consola
+    private Scanner scanner;
+    
+    //Inicializa la lista y el lector de entrada
+    public ControladorJugador() {
+        this.jugadores = new ArrayList<>();
+        this.scanner = new Scanner(System.in);
+    }
+
+    //Crea los jugadores humanos y opcionalmente una IA
+    public void inicializarJugadores(int numHumanos, boolean incluirIA) {
+        jugadores.clear();
+        
+        // Jugadores humanos
+        for(int i = 1; i <= numHumanos; i++) {
+            System.out.print("Nombre del jugador " + i + ": ");
+            String nombre = scanner.nextLine();
+            System.out.print("Color de la ficha: ");
+            String color = scanner.nextLine();
+            
+            jugadores.add(new Jugador(nombre, color, TipoJugador.HUMANO));
+        }
+
+        // IA
+        if(incluirIA) {
+            jugadores.add(new Jugador("IA-Pingu", "Rojo", TipoJugador.IA));
+            System.out.println("IA añadida a la partida");
+        }
+    }
+    //Devuelve la lista de jugadores
+    public List<Jugador> getJugadores() { return jugadores; }
+    
+    //Muestra el ganador por consola
+    public void registrarVictoria(Jugador ganador) {
+        System.out.println("¡" + ganador.getNombre() + " ha ganado!");
+    }
+}
