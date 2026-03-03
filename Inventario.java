@@ -61,3 +61,14 @@ public class Inventario {
             items.put(item.TipoItem.DADO, actual + 1);
         }
     }
+    //Método para quitar un dado
+    public boolean quitarDado() {
+        //Obtiene cantidad actual
+        int actual = items.get(item.TipoItem.DADO);
+        if (actual > 0) {
+            //Si hay al menos 1, lo quita y devuelve true
+            items.put(item.TipoItem.DADO, actual - 1);
+            return true;
+        }
+        return false;
+    }
