@@ -62,3 +62,58 @@ public class ControladorJuego {
         System.out.println("3. Salir");
         System.out.print("Elige: ");
     }
+    //Metodo para crear una nueva partida
+    private void nuevaPartida() {
+        //Pide cuantos jugadores humanos van a jugar
+        System.out.print("\n¿Cuántos jugadores humanos? (1-3): ");
+        int numHumanos = scanner.nextInt();
+        //Pregunta si se quiere jugar contra la IA
+        System.out.print("¿Incluir IA? (s/n): ");
+        String incluirIA = scanner.next();
+        
+        controladorJugador.inicializarJugadores(numHumanos, incluirIA.equalsIgnoreCase("s")); //Llama al ControladorJugador
+        controladorTablero.generarTablero(); //Crea el tablero con todas sus casillas
+        controladorTurnos.setJugadores(controladorJugador.getJugadores()); //Pasa al controlador de turnos la lista de jugadores
+        
+        vista.mostrarInicioPartida(); //Muestra mensaje de inicio
+        controladorTablero.mostrarTablero(); //Muestra el tablero vacío
+
+        //Llama al metodo que inicia el juego
+        jugar();
+    }
+    //Metodo principal del juego
+    private void jugar() {
+        juegoActivo = true; //Activa el juego
+        //Bucle que se ejecuta mientras el juego este activo
+        while(juegoActivo) {
+            Jugador jugadorActual = controladorTurnos.getJugadorActual(); //Obtiene al jugador que le toca jugar ahora
+            
+            if (jugadorActual.esIA()) {
+                procesarTurnoIA(jugadorActual); //Si el jugador es IA se llama al método para IA
+            } else {
+                procesarTurnoHumano(jugadorActual); //Y si es humano pues llama al metodo para humano
+            }
+            //Comprueba si alguien ha ganado y si hay un ganador pues se finaliza la partida
+            if (haGanado(jugadorActual)) {
+                finalizarPartida(jugadorActual);
+                break;
+            }
+            
+            controladorTurnos.siguienteTurno(); //Pasa al siguiente jugador
+            //Pausa hasta que el usuario le de a ENTER
+            System.out.println("\nPresiona ENTER para continuar...");
+            scanner.nextLine();
+        }
+    }
+    //Metodo para procesar el turno de un jugador humano
+    private void procesarTurnoHumano(Jugador jugador) {
+        vista.mostrarTurno(jugador); //Muestra el turno del jugador
+        //Espera a que el usuario pulse ENTER para lanzar el dado
+        System.out.print("Presiona ENTER para lanzar dado...");
+        scanner.nextLine();
+        //Llama al método del jugador para lanzar el dado y muestra el resultado
+        int dado = jugador.lanzarDado();
+        System.out.println("  🎲 Dado: " + dado);
+        //Llama al método que mueve al jugador
+        moverJugador(jugador, dado);
+    }
