@@ -9,6 +9,10 @@ public class Trineo implements Entidad {
     //Método que devuelve un String con el símbolo
     public String getSimbolo() { return "🛷"; }
     
+    @Override
+    //Funcion que devuelve la descripción del objeto
+    public String getDescripcion() { return "¡Te impulsa hacia adelante!"; }
+    
    
    
 }
